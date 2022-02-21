@@ -18,7 +18,7 @@ type Checker struct {
 func NewChecker(rawURL string) (*Checker, error) {
 	var err error
 	c := &Checker{}
-	c.c, err = ethclient.Dial("https://cloudflare-eth.com")
+	c.c, err = ethclient.Dial(rawURL)
 	return c, err
 }
 
