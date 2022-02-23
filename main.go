@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"os"
 
+	"github.com/anccy/playground/wallet"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 )
@@ -33,7 +34,7 @@ func (c *Checker) checkBalanceEth(addr string) (*big.Float, error) {
 	return ethValue, err
 }
 
-func main() {
+func CLI() {
 	checker, err := NewChecker("https://cloudflare-eth.com")
 	if err != nil {
 		fmt.Printf("invalid net: %v\n", err)
@@ -50,4 +51,8 @@ func main() {
 		fmt.Printf("balance check error:%v\n", err)
 	}
 	fmt.Printf("balance is %v eth\n", o)
+}
+
+func main() {
+	wallet.ImportKs()
 }
