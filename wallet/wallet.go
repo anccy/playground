@@ -33,28 +33,28 @@ func CreateKs() {
 	ks := keystore.NewKeyStore("./tmp", keystore.StandardScryptN, keystore.StandardScryptP)
 	account, err := ks.NewAccount("secret")
 	if err != nil {
-        log.Fatal(err)
-    }
+		log.Fatal(err)
+	}
 	fmt.Println("address: ", account.Address.Hex())
 }
 
 func ImportKs() {
 	file := ""
-    ks := keystore.NewKeyStore("./tmp1", keystore.StandardScryptN, keystore.StandardScryptP)
+	ks := keystore.NewKeyStore("./tmp1", keystore.StandardScryptN, keystore.StandardScryptP)
 	fmt.Println(ks.Accounts())
-    jsonBytes, err := os.ReadFile(file)
-    if err != nil {
-        log.Fatal(err)
-    }
+	jsonBytes, err := os.ReadFile(file)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    password := "secret"
-    account, err := ks.Import(jsonBytes, password, "yyy")
+	password := "secret"
+	account, err := ks.Import(jsonBytes, password, "yyy")
 	fmt.Println("address: ", account.Address.Hex())
-    if err != nil {
-        log.Fatal("import error: ", err)
-    }
+	if err != nil {
+		log.Fatal("import error: ", err)
+	}
 
-    if err := os.Remove(file); err != nil {
-        log.Fatal(err)
-    }
+	if err := os.Remove(file); err != nil {
+		log.Fatal(err)
+	}
 }
